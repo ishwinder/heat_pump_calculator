@@ -75,9 +75,14 @@ st.sidebar.table(df_cook.style.format(precision=1))
 st.title('Heat Pump Running Costs and Emissions Estimator')    
 
 
-st.write('Use this tool to compare how a heat pump could change your annual energy bills and CO$_2$ emissions.  '
-+ 'Enter some information below, and once you are ready, press the *Update Results* button at the bottom to see the comparison.  ' +
-'This tool is currently only suited to those who use a gas boiler as the main source of heat for their house.')
+message = """
+This tool is developed for cost benefit analysis of heatpump vs using the gas furnace alone in Canada.
+Please note that using heat pump alone might not be feasible for most of the places in Canada unless ofcourse
+heatpump is very high rating in which case cost of installing the heatpump will be prohibitive itself. Therefore,
+the tool assumes that with heatpump gas furnace is used as supplemental heating source.
+The tool also compares the CO$_2$ emissions for both the setups.
+"""
+st.write(message)
 st.markdown('To calculate an estimate of the cost of installing a heat pump, see the Nesta demo tool ' +
 '<a href="http://asf-hp-cost-demo-l-b-1046547218.eu-west-1.elb.amazonaws.com/">here</a>.', unsafe_allow_html=True)
 #st.header('Inputs')
