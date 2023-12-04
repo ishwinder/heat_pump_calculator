@@ -42,10 +42,7 @@ efficiency_opts = [('Draft proofing and/or door insulation (3%)', 0.03),
                     ('Enter a custom heating demand saving', -1.0)]
 #____________ Page info________________________________________
 
-about_markdown = 'This app has been developed by Chris Warwick, August-October 2022, for Green Heat Coop Ltd. ' + \
-'(www.greenheatcoop.co.uk). For enquiries about this tool you can email hello@greenheatcoop.co.uk, or message' + \
-    ' @greenheatcoop on Twitter, Facebook, or Nextdoor. This program is free software: you can redistribute it and/or modify' + \
-' it under the terms of the GNU General Public License as published by the Free Software Foundation, version 3 of the License.'
+about_markdown = 'This app has been developed by UrbanTasker Inc. (urbantasker.com)' 
 
 st.set_page_config(layout="centered", menu_items={'Get Help': None, 'Report a Bug': None, 'About': about_markdown})
 
@@ -77,8 +74,6 @@ st.sidebar.table(df_cook.style.format(precision=1))
 
 st.title('Heat Pump Running Costs and Emissions Estimator')    
 
-img = Image.open('heat pump close up edit.JPG')
-st.image(img)
 
 st.write('Use this tool to compare how a heat pump could change your annual energy bills and CO$_2$ emissions.  '
 + 'Enter some information below, and once you are ready, press the *Update Results* button at the bottom to see the comparison.  ' +
@@ -282,7 +277,7 @@ st.write('')
 st.write('')
 st.write('')
 st.write('')
-st.markdown("This tool is a project of <a href='https://www.greenheatcoop.co.uk'>Green Heat Coop Ltd</a>.", unsafe_allow_html=True)
+st.markdown("This tool is a project of <a href='https://urbantasker.com'>UrbanTasker</a>.", unsafe_allow_html=True)
 img = Image.open('web_banner.png')
 st.image(img)
 
