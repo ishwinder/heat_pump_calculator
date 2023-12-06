@@ -83,8 +83,6 @@ the tool assumes that with heatpump gas furnace is used as supplemental heating 
 The tool also compares the CO$_2$ emissions for both the setups.
 """
 st.write(message)
-st.markdown('To calculate an estimate of the cost of installing a heat pump, see the Nesta demo tool ' +
-'<a href="http://asf-hp-cost-demo-l-b-1046547218.eu-west-1.elb.amazonaws.com/">here</a>.', unsafe_allow_html=True)
 #st.header('Inputs')
 st.markdown("<div id='linkto_top'></div>", unsafe_allow_html=True)
 #Now go to main tabs
@@ -100,23 +98,17 @@ with tab1:
      
     # if is_know_annual is 'Yes':
 
-    c1, c2 = st.columns(2)        
+    c1, c2, c3 = st.columns(3)        
     with c1:
-        elec_total_kWh = st.number_input('Annual electricity consumption (kWh):', min_value=0, max_value=100000, value=3000, step=100)
+        province = st.selectbox('Province:', ('Ontario', 'BC'))
     with c2:
-        gas_total_kWh = st.number_input('Annual gas consumption (kWh):', min_value=0, max_value=100000, value=12000, step=100)        
+        elec_total_kWh = st.number_input('Annual electricity consumption (kWh):', min_value=0, max_value=100000, value=3000, step=100)
+    with c3:
+        if province == 'Ontario':
+            gas_total_kWh = st.number_input("Annual gas consumption (m^3):", min_value=0, max_value=100000, value=12000, step=100)
+        else:
+            gas_total_kWh = st.number_input("Annual gas consumption (Joules):", min_value=0, max_value=1000, value=100, step=1)
 
-    is_elec_renewable = st.checkbox('I have a 100% renewable energy tariff', value=False)    
-    
-    with st.expander('More about renewable energy tariffs'):
-        st.markdown('Please note that not all "100% renewable" energy tariffs are equivalent. For example some suppliers invest in ' +
-        'renewable energy production, while others only buy unwanted renewable energy certificates. You can learn more about this ' +
-        "<a href='https://www.cse.org.uk/advice/advice-and-support/green-electricity-tariffs'>here</a>. In this tool we take a 100% renewable" +
-        ' tariff to have zero carbon emissions, otherwise we use the emissions of the general energy mix of the grid. We leave it to you to decide' +
-        ' which is more appropriate for your tariff. This also means that the embedded carbon emissions of the grid and energy generators is not accounted for here.',
-        unsafe_allow_html=True)
-
-    st.write(' To customize the energy tariff used, see the *Advanced Settings* tab.')
 
     st.subheader('2.  Hot water usage')
     st.write('How is your hot water heated?  If you have solar thermal panels to heat your hot water, select the source which tops-up the temperature when needed.')
@@ -283,8 +275,6 @@ st.write('')
 st.write('')
 st.write('')
 st.markdown("This tool is a project of <a href='https://urbantasker.com'>UrbanTasker</a>.", unsafe_allow_html=True)
-img = Image.open('web_banner.png')
-st.image(img)
 
 st.markdown("<a href='#linkto_top'>^ Back to top ^</a>", unsafe_allow_html=True)
 
